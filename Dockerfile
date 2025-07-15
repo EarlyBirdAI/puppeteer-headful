@@ -5,49 +5,24 @@ LABEL "com.github.actions.description"="A GitHub Action / Docker image for Puppe
 LABEL "com.github.actions.icon"="layout"
 LABEL "com.github.actions.color"="blue"
 
-LABEL "repository"="https://github.com/EarlyBirdAI/puppeteer-headful"
-LABEL "homepage"="https://github.com/EarlyBirdAI/puppeteer-headful"
-LABEL "maintainer"="Your Name <you@example.com>"
+LABEL "repository"="https://github.com/mujo-code/puppeteer-headful"
+LABEL "homepage"="https://github.com/mujo-code/puppeteer-headful"
+LABEL "maintainer"="Jacob Lowe"
 
-RUN apt-get update \
-     && apt-get install -y --no-install-recommends \
-     ca-certificates \
-     apt-transport-https \
-     gnupg \
-     lsb-release \
-     wget \
-     xvfb \
-     libgconf-2-4 \
-     libnss3 \
-     libx11-xcb1 \
-     libxcomposite1 \
-     libxcursor1 \
-     libxdamage1 \
-     libxi6 \
-     libxtst6 \
-     libatk1.0-0 \
-     libcups2 \
-     libxrandr2 \
-     libxss1 \
-     libasound2 \
-     libatk-bridge2.0-0 \
-     libgtk-3-0 \
-     libdbus-1-3 \
-     libgbm1 \
-     fonts-liberation \
-     libappindicator3-1 \
-     libsecret-1-0 \
-     && wget -qO- https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
-     && echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" \
-     > /etc/apt/sources.list.d/google-chrome.list \
+RUN  apt-get update \
+     # Install latest chrome dev package, which installs the necessary libs to
+     # make the bundled version of Chromium that Puppeteer installs work.
+     && apt-get install -y wget xvfb --no-install-recommends \
+     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+     && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
      && apt-get update \
-     && apt-get install -y --no-install-recommends google-chrome-stable \
+     && apt-get install -y google-chrome-stable --no-install-recommends \
      && rm -rf /var/lib/apt/lists/*
 
-# Prevent Puppeteer from downloading its own Chromium
+
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 
 COPY README.md /
-COPY entrypoint.sh /entrypoint.sh
 
+COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
