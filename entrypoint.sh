@@ -10,6 +10,8 @@ export PUPPETEER_EXEC_PATH="$(which google-chrome-stable)"
 # Run commands
 cmd=$@
 echo "Running '$cmd'!"
+echo $PUPPETEER_EXEC_PATH
+
 if $cmd; then
     # no op
     echo "Successfully ran '$cmd'"

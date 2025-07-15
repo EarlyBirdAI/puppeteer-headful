@@ -1,0 +1,15 @@
+# docker-compose.yml
+version: "3.8"
+
+services:
+  puppeteer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # if you need the amd64 build on Apple Silicon:
+    platform: linux/amd64
+    image: ebai/puppeteer-headful:latest
+    entrypoint: ["/entrypoint.sh"]
+    # default command if your entrypoint expects args, or override to inspect:
+    # command: ["bash"]
+    # expose any ports or volumes here if needed
