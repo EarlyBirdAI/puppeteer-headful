@@ -18,6 +18,11 @@ RUN apt-get update \
      wget \
      xvfb \
      xclip \
+     x11-utils \
+     dbus-x11 \
+     xfce4 \
+     xfce4-goodies \
+     xfce4-clipman-plugin \
      libgconf-2-4 \
      libnss3 \
      libx11-xcb1 \
