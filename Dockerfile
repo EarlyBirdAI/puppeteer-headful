@@ -17,6 +17,7 @@ RUN apt-get update \
      lsb-release \
      wget \
      xvfb \
+     xclip \
      libgconf-2-4 \
      libnss3 \
      libx11-xcb1 \
