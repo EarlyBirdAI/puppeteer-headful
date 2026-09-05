@@ -1,4 +1,4 @@
-FROM node:lts-bullseye
+FROM node:lts-bookworm
 
 LABEL "com.github.actions.name"="Puppeteer Headful"
 LABEL "com.github.actions.description"="A GitHub Action / Docker image for Puppeteer, the Headful Chrome Node API"
