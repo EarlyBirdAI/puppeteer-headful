@@ -1,0 +1,9 @@
+{
+  "step": "01", "recipe": "ci-run", "class": "safe", "sha": "d90163bbf7abdfc7aa0769eca5541c53d995909c",
+  "result": "PASS",
+  "reason": null,
+  "attempted": "Read the PR's own publish-image.yml run: gh run view 37995684028 -R EarlyBirdAI/puppeteer-headful --log",
+  "expected": "the PR run of the new workflow builds the image (no push) and goes green",
+  "observed": "Run completed success at d90163b. docker/build-push-action@v6 ran with push: false, load: false, tags ghcr.io/earlybirdai/puppeteer-headful:sha-9554e94 (merge commit); latest tag disabled off the default branch, as designed. Base image pull from Docker Hub succeeded this time. No push happened.",
+  "artifacts": ["log.txt"]
+}

@@ -1,0 +1,9 @@
+{
+  "step": "03", "recipe": "unit", "class": "safe", "sha": "d90163bbf7abdfc7aa0769eca5541c53d995909c",
+  "result": "PASS",
+  "reason": null,
+  "attempted": "git diff --stat origin/master...HEAD in the worktree",
+  "expected": "action.yml still builds from Dockerfile, so aero and kaio (until the kaio PR merges) behave exactly as before",
+  "observed": "Only .github/workflows/publish-image.yml (+55) and README.md (+11) change. action.yml, Dockerfile and entrypoint.sh are untouched, so every `uses: EarlyBirdAI/puppeteer-headful@master` consumer builds exactly as before.",
+  "artifacts": []
+}

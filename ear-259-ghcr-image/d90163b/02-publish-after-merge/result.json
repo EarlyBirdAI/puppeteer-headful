@@ -1,0 +1,9 @@
+{
+  "step": "02", "recipe": "ci-run", "class": "outward-needs-approval", "sha": "d90163bbf7abdfc7aa0769eca5541c53d995909c",
+  "result": "OWED",
+  "reason": "outward-needs-approval",
+  "attempted": "not run: publishing only happens on a push to master, i.e. after the user merges",
+  "expected": "push run publishes ghcr.io/earlybirdai/puppeteer-headful:latest and sha-<short>; package page shows it; anonymous docker pull works if the package is public",
+  "observed": "Owed to the user: merge, then check the master run and the package page; set visibility or kaio's Actions access.",
+  "artifacts": []
+}

@@ -1,0 +1,30 @@
+build	Set up job	2026-10-09T21:49:01.7829558Z Complete job name: build
+build	Run docker/build-push-action@v6	2026-10-09T21:49:03.7267841Z   push: false
+build	Run docker/build-push-action@v6	2026-10-09T21:49:03.7268147Z   tags: ghcr.io/earlybirdai/puppeteer-headful:sha-9554e94
+build	Run docker/build-push-action@v6	2026-10-09T21:49:03.7272001Z   load: false
+build	Run docker/build-push-action@v6	2026-10-09T21:49:05.0176004Z #1 [internal] load build definition from Dockerfile
+build	Run docker/build-push-action@v6	2026-10-09T21:49:05.0177039Z #1 DONE 0.0s
+build	Run docker/build-push-action@v6	2026-10-09T21:49:05.0177419Z #2 [auth] library/node:pull token for registry-1.docker.io
+build	Run docker/build-push-action@v6	2026-10-09T21:49:05.0177912Z #2 DONE 0.0s
+build	Run docker/build-push-action@v6	2026-10-09T21:49:05.0178339Z #3 [internal] load metadata for docker.io/library/node:lts-bookworm
+build	Run docker/build-push-action@v6	2026-10-09T21:49:05.2516553Z #3 DONE 0.5s
+build	Run docker/build-push-action@v6	2026-10-09T21:49:05.3705857Z #4 [internal] load .dockerignore
+build	Run docker/build-push-action@v6	2026-10-09T21:49:05.3707296Z #4 DONE 0.0s
+build	Run docker/build-push-action@v6	2026-10-09T21:49:05.3707638Z #5 [internal] load build context
+build	Run docker/build-push-action@v6	2026-10-09T21:49:05.3708443Z #5 DONE 0.0s
+build	Run docker/build-push-action@v6	2026-10-09T21:49:05.3709209Z #6 [1/4] FROM docker.io/library/node:lts-bookworm@sha256:3d27e5c11e5786e309ec3e03f93ae536eb36e6e5eb3714d5eb3300a36157add0
+build	Run docker/build-push-action@v6	2026-10-09T21:49:19.7200715Z #6 DONE 14.3s
+build	Run docker/build-push-action@v6	2026-10-09T21:49:19.7203738Z #7 [2/4] RUN apt-get update      && apt-get install -y --no-install-recommends      ca-certificates      apt-transport-https      gnupg      lsb-release 
+build	Run docker/build-push-action@v6	2026-10-09T21:49:48.7223271Z #7 DONE 29.2s
+build	Run docker/build-push-action@v6	2026-10-09T21:49:48.9005770Z #8 [3/4] COPY README.md /
+build	Run docker/build-push-action@v6	2026-10-09T21:49:48.9006298Z #8 DONE 0.0s
+build	Run docker/build-push-action@v6	2026-10-09T21:49:48.9007116Z #9 [4/4] COPY entrypoint.sh /entrypoint.sh
+build	Run docker/build-push-action@v6	2026-10-09T21:49:48.9007542Z #9 DONE 0.0s
+build	Run docker/build-push-action@v6	2026-10-09T21:49:48.9007877Z #10 exporting to image
+build	Run docker/build-push-action@v6	2026-10-09T21:49:48.9008226Z #10 exporting layers
+build	Run docker/build-push-action@v6	2026-10-09T21:49:53.4854732Z #10 exporting layers 4.7s done
+build	Run docker/build-push-action@v6	2026-10-09T21:49:53.5187514Z #10 DONE 4.7s
+build	Run docker/build-push-action@v6	2026-10-09T21:49:53.5188271Z #11 DONE 0.0s
+build	Post Run docker/build-push-action@v6	2026-10-09T21:49:53.7937140Z exporting build record to /home/runner/work/_temp/docker-actions-toolkit-CBEvwD/export
+build	Complete job	﻿2026-10-09T21:49:54.9834408Z Cleaning up orphan processes
+build	Complete job	2026-10-09T21:49:55.0105879Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, docker/build-push-action@v6, do
