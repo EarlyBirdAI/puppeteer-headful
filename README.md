@@ -35,6 +35,17 @@ jobs:
           args: npm test
 ```
 
+### Prebuilt image
+
+`.github/workflows/publish-image.yml` publishes this image to `ghcr.io/earlybirdai/puppeteer-headful` (`latest` from master, plus `sha-<short sha>`) whenever the Dockerfile or entrypoint changes. Pulling it avoids rebuilding from Docker Hub on every run:
+
+```yaml
+      - name: Test Code
+        uses: docker://ghcr.io/earlybirdai/puppeteer-headful:latest
+        with:
+          args: npm test
+```
+
 > Note: You will need to let Puppeteer know not to download Chromium. By setting the env of your install task to PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = 'true' so it does not install conflicting versions of Chromium.
 
 Then you will need to change the way you launch Puppeteer. We export out a nifty ENV variable `PUPPETEER_EXEC_PATH` that you set at your `executablePath`. This should be undefined locally so it should function perfectly fine locally and on the action.
