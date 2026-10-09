@@ -1,0 +1,55 @@
+name: Publish image
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - Dockerfile
+      - entrypoint.sh
+      - README.md
+      - .github/workflows/publish-image.yml
+  pull_request:
+    branches: [master]
+    paths:
+      - Dockerfile
+      - entrypoint.sh
+      - README.md
+      - .github/workflows/publish-image.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to GHCR
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # `latest` only from master, so a manual run on another branch can't overwrite it.
+      - id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/earlybirdai/puppeteer-headful
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,prefix=sha-
+          labels: |
+            org.opencontainers.image.source=https://github.com/EarlyBirdAI/puppeteer-headful
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
